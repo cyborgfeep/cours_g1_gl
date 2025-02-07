@@ -115,6 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.white,
                 child: GridView.builder(
                   shrinkWrap: true,
+                  physics: const ClampingScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4),
                   itemCount: optionList.length,
@@ -139,6 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.white,
                 child: ListView.builder(
                   shrinkWrap: true,
+                  physics: const ClampingScrollPhysics(),
                   itemCount: Transaction.tList.length,
                   itemBuilder: (context, index) {
                     Transaction t = Transaction.tList[index];
@@ -184,9 +186,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
               ),
-              const SizedBox(
-                height: 1000,
-              )
             ],
           ))
         ],
