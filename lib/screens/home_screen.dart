@@ -1,5 +1,6 @@
 import 'package:cours_g1_gl/models/options.dart';
 import 'package:cours_g1_gl/models/transaction.dart';
+import 'package:cours_g1_gl/screens/transfer_screen.dart';
 import 'package:cours_g1_gl/widgets/card_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -125,7 +126,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     Option o = optionList[index];
                     return optionWidget(
                         onTap: () {
-                          print(o.title);
+                          switch (index) {
+                            case 0:
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) {
+                                  return const TransferScreen();
+                                },
+                              ));
+                              break;
+                          }
                         },
                         title: o.title!,
                         icon: o.icon!,
