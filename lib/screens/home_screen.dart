@@ -107,7 +107,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 60,
                       ),
                     ),
-                    const CardWidget()
+                    const CardWidget(
+                      isClickable: true,
+                    )
                   ],
                 ),
               ),

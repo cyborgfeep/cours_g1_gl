@@ -5,8 +5,10 @@ import 'package:pretty_qr_code/pretty_qr_code.dart';
 class CardWidget extends StatefulWidget {
   final double? width;
   final double? height;
+  final bool? isClickable;
 
-  const CardWidget({super.key, this.width, this.height});
+  const CardWidget(
+      {super.key, this.width, this.height, this.isClickable = false});
 
   @override
   State<CardWidget> createState() => _CardWidgetState();
@@ -17,11 +19,13 @@ class _CardWidgetState extends State<CardWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ScanScreen(),
-            ));
+        if (widget.isClickable!) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ScanScreen(),
+              ));
+        }
       },
       child: Align(
         alignment: Alignment.center,
@@ -46,6 +50,7 @@ class _CardWidgetState extends State<CardWidget> {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     height: 100,
@@ -54,19 +59,21 @@ class _CardWidgetState extends State<CardWidget> {
                       data: 'https://google.com',
                     ),
                   ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.camera_alt_rounded,
-                        size: 20,
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text("Scanner")
-                    ],
-                  )
+                  widget.isClickable!
+                      ? const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.camera_alt_rounded,
+                              size: 20,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text("Scanner")
+                          ],
+                        )
+                      : const SizedBox.shrink()
                 ],
               ),
             ),
