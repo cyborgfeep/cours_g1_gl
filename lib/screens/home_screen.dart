@@ -130,7 +130,18 @@ class _HomeScreenState extends State<HomeScreen> {
                             case 0:
                               Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) {
-                                  return const TransferScreen();
+                                  return const OperationScreen(
+                                    isTransfer: true,
+                                  );
+                                },
+                              ));
+                              break;
+                            case 2:
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) {
+                                  return const OperationScreen(
+                                    isTransfer: false,
+                                  );
                                 },
                               ));
                               break;
